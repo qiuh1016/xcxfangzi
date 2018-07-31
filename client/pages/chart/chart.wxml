@@ -1,0 +1,19 @@
+<!--pages/chart/chart.wxml-->
+<text>pages/chart/chart.wxml</text>
+<view class="uploader">
+    <view class="uploader-text" bindtap="pageBack">
+        <text>返回</text>
+    </view>
+</view>
+
+<view>
+  <canvas canvas-id="areaCanvas" class="canvas"></canvas>
+</view>
+
+<view>
+  <canvas canvas-id="columnCanvas" class="canvas"></canvas>
+</view>
+
+<view>
+  <canvas canvas-id="pieCanvas" class="canvas"></canvas>
+</view>
