@@ -1,5 +1,5 @@
 // pages/chart/chart.js
-var wxCharts = require('../../utils/wxcharts-min.js');
+var wxCharts = require('../../vendor/wxcharts/wxcharts-min.js');
 
 Page({
 
@@ -32,6 +32,7 @@ Page({
       canvasId: 'areaCanvas',
       width: windowWidth,
       height: windowWidth / 2,
+      animation: false,
       type: 'area',
       categories: ['2016-08', '2016-09', '2016-10', '2016-11', '2016-12', '2017'],
       series: [{
@@ -58,6 +59,7 @@ Page({
       canvasId: 'columnCanvas',
       width: windowWidth,
       height: windowWidth / 2,
+      animation: false,
       type: 'column',
       categories: ['2016-08', '2016-09', '2016-10', '2016-11', '2016-12', '2017'],
       series: [{
@@ -85,6 +87,7 @@ Page({
       canvasId: 'pieCanvas',
       width: windowWidth,
       height: windowWidth / 2,
+      animation: false,
       type: 'pie',
       series: [{
         name: '成交量1',

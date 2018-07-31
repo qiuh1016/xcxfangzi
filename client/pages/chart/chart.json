@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "业绩展示",
+  "usingComponents": {
+    "i-button": "../../vendor/iView/button/index"
+  }
+}
