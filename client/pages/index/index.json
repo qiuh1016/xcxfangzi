@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents": {
+    "i-tab-bar": "../../vendor/iView/tab-bar/index",
+    "i-tab-bar-item": "../../vendor/iView/tab-bar-item/index"
+  }
+}

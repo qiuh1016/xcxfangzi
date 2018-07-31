@@ -11,6 +11,12 @@ Page({
     requestResult: ''
   },
 
+  onLoad: function (options) {
+    // wx.navigateTo({
+    //   url: '../chart/chart',
+    // });
+  },
+
   // 用户登录示例
   bindGetUserInfo: function() {
     if (this.data.logged) return
@@ -144,6 +150,7 @@ Page({
             util.showSuccess('打卡成功')
             console.log(res.data);
             wx.openLocation({
+              name: '打卡位置',
               latitude: location.latitude,
               longitude: location.longitude,
             })

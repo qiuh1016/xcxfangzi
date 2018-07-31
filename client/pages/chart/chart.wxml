@@ -1,10 +1,5 @@
 <!--pages/chart/chart.wxml-->
-<text>pages/chart/chart.wxml</text>
-<view class="uploader">
-    <view class="uploader-text" bindtap="pageBack">
-        <text>返回</text>
-    </view>
-</view>
+<i-button type="primary" bind:click="pageBack">返回</i-button>
 
 <view>
   <canvas canvas-id="areaCanvas" class="canvas"></canvas>
