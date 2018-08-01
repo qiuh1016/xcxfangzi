@@ -1,1 +1,3 @@
 /* pages/user/input/input.wxss */
+
+@import "../../../weui.wxss"

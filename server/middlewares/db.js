@@ -44,13 +44,19 @@ const userTableSql =
 
   name VARCHAR(20) NOT NULL,
   phone VARCHAR(20) NOT NULL unique,
+  openid VARCHAR(50) unique,  
+  permission INT NOT NULL,
+  depart VARCHAR(10),
+  active BOOLEAN,
 
-  dateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  createAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY ( id )
   );
   `
 
-const changeCharSet = `ALTER TABLE user MODIFY name VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci;`
+const changeNameCharSet = `ALTER TABLE user MODIFY name VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci;`
+const changeDepartCharSet = `ALTER TABLE user MODIFY depart VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci;`
+
 const addUnique = 'ALTER TABLE `user` ADD UNIQUE(`phone`);';
 
 let createTable = function (sql) {
@@ -60,13 +66,39 @@ let createTable = function (sql) {
 // 建表
 createTable(userTableSql);
 // 切换编码
-createTable(changeCharSet);
+createTable(changeNameCharSet);
+createTable(changeDepartCharSet);
 // 手机号唯一
-createTable(addUnique);
+// createTable(addUnique);
 
-let insertUser = function (name, phone) {
-  let _sql = "insert into user(name, phone) values(?,?)";
-  return query(_sql, [name, phone]);
+let insertUser = function (name, phone, openid, permission, depart, active) {
+  let _sql = "insert into user(name, phone, openid, permission, depart, active) values(?,?,?,?,?,?)";
+  return query(_sql, [name, phone, openid, permission, depart, active]);
+}
+
+let getUserByOpenId = function (openid) {
+  let _sql = "select * from user where openid = ?;";
+  return query(_sql, [openid]);
+}
+
+let getUserByPhone = function (phone) {
+  let _sql = "select * from user where phone = ?;";
+  return query(_sql, [phone]);
+}
+
+let activeUser = function(openid) {
+  let _sql = "update user set active = true where openid = ?;";
+  return query(_sql, [openid]);
+}
+
+let updateOpenid = function (phone, openid) {
+  let _sql = "update user set openid = ? where phone = ?;";
+  return query(_sql, [openid, phone]);
+}
+
+let updatePermission = function(openid, permission) {
+  let _sql = "update user set permission = ? where openid = ?;";
+  return query(_sql, [permission, openid]);
 }
 
 let getAllUser = function () {
@@ -82,6 +114,11 @@ let deleteUser = function(id) {
 module.exports = {
   query,
   insertUser,
+  getUserByOpenId,
+  getUserByPhone,
+  activeUser,
+  updateOpenid,
+  updatePermission,
   getAllUser,
   deleteUser
 }

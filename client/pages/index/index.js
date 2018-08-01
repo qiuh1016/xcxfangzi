@@ -12,9 +12,7 @@ Page({
   },
 
   onLoad: function(options) {
-    // wx.navigateTo({
-    //   url: '../chart/chart',
-    // });
+    this.bindGetUserInfo();
   },
 
   // 用户登录示例
@@ -35,8 +33,37 @@ Page({
             userInfo: res,
             logged: true
           })
-          util.showSuccess('登录成功')
-          console.log(res.avatarUrl);
+          // console.log(res.avatarUrl);
+          // console.log(res);
+          // check openid
+          let openid = res.openId;
+          wx.request({
+            url: config.service.checkOpenIdUrl,
+            data: {
+              openid: openid
+            },
+            success: function (res) {
+              console.log(res.data)              
+              if (res.data.code === 1) {
+                if (res.data.active) {
+                  // 登陆成功
+                  util.showSuccess('登录成功')
+                } else {
+                  // 需要激活
+                  util.showModel('提示', '您的账户需要主管经理激活')
+                }
+              } else {
+                // 新用户信息输入
+                wx.navigateTo({
+                  url: '../user/input/input?openid=' + openid,
+                })
+              }
+            },
+            fail: function (err) {
+              util.showModel('服务器连接错误', err.message)
+              console.error(err)
+            }
+          })
         },
         fail: err => {
           console.error(err)

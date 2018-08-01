@@ -15,12 +15,81 @@
     <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" />
 </i-panel> -->
 
-<form>
+<!-- <form>
   <i-panel title="用户信息">
     <i-input value="{{ value6 }}" type="text" right title="姓名" mode="wrapped" placeholder="" maxlength="10"/>
     <i-input value="{{ value6 }}" type="number" right title="手机号" mode="wrapped" placeholder="" maxlength="11"/>
-    <!-- <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" maxlength="10"/> -->
+    <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" maxlength="10"/>
   </i-panel>
 
   <i-button type="primary" bind:click="submit">提交</i-button>
+</form> -->
+
+<form bindsubmit="formSubmit">
+  <view class="section">
+    <view class="weui-cells__title">姓名</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="name" placeholder="请输入您的姓名" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="weui-cells__title">性别</view>
+    <radio-group name="gender">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <label style='padding:10rpx;'>
+            <radio value="male" />男</label>
+          <label style='padding:10rpx;'>
+            <radio value="female" />女</label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+
+  <view class="section">
+    <view class="weui-cells__title">手机</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="phone" type="number" placeholder="请输入您的手机号码" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="weui-cells__title">部门</view>
+    <radio-group name="depart">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <label style='padding:10rpx;'>
+            <radio value="depart1" />销售一部</label>
+          <label style='padding:10rpx;'>
+            <radio value="depart2" />销售二部</label>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <label style='padding:10rpx;'>
+            <radio value="depart3" />销售三部</label>
+          <label style='padding:10rpx;'>
+            <radio value="depart4" />销售四部</label>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <label style='padding:10rpx;'>
+            <radio value="depart5" />销售五部</label>
+          <label style='padding:10rpx;'>
+            <radio value="lingdao" />经营层</label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+
+  <view class="btn-area" style='padding: 20rpx;'>
+    <button formType="submit" type="primary">提交</button>
+  </view>
+
 </form>

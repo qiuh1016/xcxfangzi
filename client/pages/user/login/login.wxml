@@ -5,5 +5,5 @@
 </view>
 
 <view class="logo">
-  <i-button bind:click="handleClick" type="primary">登录</i-button>
+  <i-button type="primary" bindtap='login'>登录</i-button>
 </view>

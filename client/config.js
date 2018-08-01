@@ -25,6 +25,12 @@ var config = {
 
         // 上传位置接口
         uploadLocationUrl: `${host}/weapp/test`,
+
+        // check openid
+        checkOpenIdUrl: `${host}/api/user/checkopenid`,
+
+        // 添加用户接口
+        addUserUrl: `${host}/api/user/add`,
     }
 };
 
