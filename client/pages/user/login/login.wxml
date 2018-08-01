@@ -1,0 +1,9 @@
+<!--pages/user/login/login.wxml-->
+<view class="logo">
+  <image src="../../images/logo.png" mode="aspectFit"></image>
+  <text class='title'>小程序标题</text>
+</view>
+
+<view class="logo">
+  <i-button bind:click="handleClick" type="primary">登录</i-button>
+</view>

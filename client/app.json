@@ -2,7 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/addCgi/addCgi",
-    "pages/chart/chart"
+    "pages/chart/chart",
+    "pages/user/user",
+    "pages/user/input/input",
+    "pages/user/login/login",
+    "pages/sign/add/add",
+    "pages/sign/list/list"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,6 +1,6 @@
 {
+  "navigationBarTitleText": "xxx",
   "usingComponents": {
-    "i-tab-bar": "../../vendor/iView/tab-bar/index",
-    "i-tab-bar-item": "../../vendor/iView/tab-bar-item/index"
+    "i-button": "../../vendor/iView/button/index"
   }
 }

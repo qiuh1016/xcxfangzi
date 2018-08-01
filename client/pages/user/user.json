@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "i-cell-group": "../../vendor/iView/cell-group/index",
+    "i-cell": "../../vendor/iView/cell/index",
+    "i-panel": "../../vendor/iView/panel/index",
+    "i-icon": "../../vendor/iView/icon/index",
+    "i-switch": "../../vendor/iView/switch/index"
+  }
+}

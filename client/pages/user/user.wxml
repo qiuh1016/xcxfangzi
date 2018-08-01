@@ -1,0 +1,17 @@
+<!--pages/user/user.wxml-->
+
+<view wx:if="{{members.length === 0}}">
+  <i-panel wx:for="{{departList}}" wx:for-item="depart" wx:key="index">
+    <i-cell title="{{depart.name}}" label="{{depart.manager}}" is-link bindtap="openUserPage" data-name="{{depart.name}}">
+      <i-icon type="homepage" slot="icon" />
+    </i-cell>
+  </i-panel>
+</view>
+
+<view wx:else>
+  <i-panel wx:for="{{members}}" wx:for-item="menber" wx:key="index">
+    <i-cell title="{{menber}}">
+      <i-icon type="addressbook" slot="icon" />
+    </i-cell>
+  </i-panel>
+</view>

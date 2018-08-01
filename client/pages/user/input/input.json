@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "新用户信息录入",
+  "usingComponents": {
+    "i-input": "../../../vendor/iView/input/index",
+    "i-button": "../../../vendor/iView/button/index",
+    "i-panel": "../../../vendor/iView/panel/index"
+  }
+}

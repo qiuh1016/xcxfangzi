@@ -1,0 +1,12 @@
+/* pages/user/login/login.wxss */
+
+.logo {
+  text-align: center;
+  margin: 30px;
+}
+
+.logo image {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}

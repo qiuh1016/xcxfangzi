@@ -11,7 +11,7 @@ Page({
     requestResult: ''
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     // wx.navigateTo({
     //   url: '../chart/chart',
     // });
@@ -36,6 +36,7 @@ Page({
             logged: true
           })
           util.showSuccess('登录成功')
+          console.log(res.avatarUrl);
         },
         fail: err => {
           console.error(err)
@@ -150,9 +151,16 @@ Page({
             util.showSuccess('打卡成功')
             console.log(res.data);
             wx.openLocation({
-              name: '打卡位置',
-              latitude: location.latitude,
-              longitude: location.longitude,
+              name: '员工1',
+              latitude: Number(location.latitude),
+              longitude: Number(location.longitude),
+              scale: 8,
+              fail: function(e) {
+                console.log(e)
+              },
+              success: function() {
+                console.log('ok')
+              }
             })
           },
           fail: function(e) {
@@ -174,6 +182,41 @@ Page({
   showChart: function() {
     wx.navigateTo({
       url: '../chart/chart',
+    })
+  },
+
+  // 显示用户页面
+  openUserPage: () => {
+    wx.navigateTo({
+      url: '../user/user',
+    })
+  },
+
+  // 显示用户信息输入页面
+  openUserInputPage: () => {
+    wx.navigateTo({
+      url: '../user/input/input',
+    })
+  },
+
+  // 显示用户登录页面
+  openUserLoginPage: () => {
+    wx.navigateTo({
+      url: '../user/login/login',
+    })
+  },
+
+  // 显示用户打卡页面
+  openSignAddPage: () => {
+    wx.navigateTo({
+      url: '../sign/add/add',
+    })
+  },
+
+  // 显示打卡列表页面
+  openSignListPage: () => {
+    wx.navigateTo({
+      url: '../sign/list/list',
     })
   },
 

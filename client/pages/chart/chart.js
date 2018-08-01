@@ -1,18 +1,36 @@
 // pages/chart/chart.js
 var wxCharts = require('../../vendor/wxcharts/wxcharts-min.js');
 
+var idinfolist = [
+  { "depart": "部门1", "number": 15 },
+  { "depart": "部门2", "number": 20 },
+  { "depart": "部门3", "number": 12 },
+  { "depart": "部门4", "number": 13 },
+  { "depart": "部门5", "number": 8 },
+]
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    dates: '2018-08-01',
+    listData: idinfolist,
   },
 
   pageBack: function () {
     wx.navigateBack({
       delta: 1
+    })
+  },
+
+  // 点击日期组件确定事件  
+  bindDateChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      dates: e.detail.value
     })
   },
 
@@ -28,32 +46,6 @@ Page({
     } catch (e) {
       // do something when get system info failed
     }
-    new wxCharts({
-      canvasId: 'areaCanvas',
-      width: windowWidth,
-      height: windowWidth / 2,
-      animation: false,
-      type: 'area',
-      categories: ['2016-08', '2016-09', '2016-10', '2016-11', '2016-12', '2017'],
-      series: [{
-        name: '成交量1',
-        data: [70, 40, 65, 100, 34, 18],
-        format: function (val) {
-          return val.toFixed(2) + '万';
-        }
-      }, {
-        name: '成交量2',
-        data: [15, 20, 45, 37, 4, 80],
-        format: function (val) {
-          return val.toFixed(2) + '万';
-        }
-      }],
-      yAxis: {
-        format: function (val) {
-          return val + '万';
-        }
-      },
-    });
 
     new wxCharts({
       canvasId: 'columnCanvas',
@@ -61,47 +53,16 @@ Page({
       height: windowWidth / 2,
       animation: false,
       type: 'column',
-      categories: ['2016-08', '2016-09', '2016-10', '2016-11', '2016-12', '2017'],
+      categories: ['部门1', '部门2', '部门3', '部门4', '部门5'],
       series: [{
-        name: '成交量1',
-        data: [15, 20, 45, 37, 4, 80]
-      }, {
-        name: '成交量2',
-        data: [70, 40, 65, 100, 34, 18]
-      }, {
-        name: '成交量3',
-        data: [70, 40, 65, 100, 34, 18]
-      }, {
-        name: '成交量4',
-        data: [70, 40, 65, 100, 34, 18]
+        name: '成交量',
+        data: [15, 20, 12, 13, 8]
       }],
       yAxis: {
         format: function (val) {
-          return val + '万';
+          return val + '套';
         }
       },
-      dataLabel: false
-    });
-
-    new wxCharts({
-      canvasId: 'pieCanvas',
-      width: windowWidth,
-      height: windowWidth / 2,
-      animation: false,
-      type: 'pie',
-      series: [{
-        name: '成交量1',
-        data: 15,
-      }, {
-        name: '成交量2',
-        data: 35,
-      }, {
-        name: '成交量3',
-        data: 78,
-      }, {
-        name: '成交量4',
-        data: 63,
-      }],
       dataLabel: false
     });
   },

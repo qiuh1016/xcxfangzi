@@ -1,0 +1,8 @@
+<!--pages/sign/add.wxml-->
+<view class='time'>
+  <text>18:30</text>
+</view>
+
+<view class='sign'>
+  <image src="../../images/sign.png" mode="aspectFit"></image>
+</view>
