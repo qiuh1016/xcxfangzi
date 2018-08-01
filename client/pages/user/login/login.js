@@ -9,10 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     logged: false
   },
 
-  login: function() {
+  login: function () {
     if (this.data.logged) return
 
     util.showBusy('正在登录')
@@ -25,12 +26,41 @@ Page({
       // 可使用本函数更新登录态
       qcloud.loginWithCode({
         success: res => {
+          console.log(res.openId);
           this.setData({
             userInfo: res,
-            logged: true
           })
-          util.showSuccess('登录成功')
-          console.log(res.avatarUrl);
+          // check openid
+          qcloud.request({
+            login: true,
+            url: config.service.checkOpenIdUrl,
+            success: (res) => {
+              console.log(res.data)
+              if (res.data.code === 1) {
+                if (res.data.active) {
+                  // 登陆成功
+                  util.showSuccess('登录成功')
+                  this.setData({
+                    logged: true
+                  })
+                  // TODO: 登陆成功之后的操作
+                  // 需要激活的处理
+                } else {
+                  // 需要激活
+                  util.showModel('提示', '您的账户需要激活')
+                }
+              } else {
+                // 新用户信息输入
+                wx.navigateTo({
+                  url: '../input/input',
+                })
+              }
+            },
+            fail: function (err) {
+              util.showModel('服务器连接错误', err.message)
+              console.error(err)
+            }
+          })
         },
         fail: err => {
           console.error(err)
@@ -73,7 +103,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('onShow');
+    let that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，直接登陆
+          console.log('已经授权，直接登陆');
+          that.login();
+        } else {
+          console.log('未授权,不进行登陆操作')
+        }
+      }
+    })
   },
 
   /**

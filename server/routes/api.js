@@ -1,11 +1,13 @@
 const router = require('koa-router')({
   prefix: '/api'
 })
+const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
+
 const controllers = require('../controllers')
 
-router.get('/user/checkopenid', controllers.myuser.checkopenid);
-router.post('/user/add', controllers.myuser.adduser);
-router.get('/user/:openid/active', controllers.myuser.activeuser);
-router.get('/user/:openid/permission', controllers.myuser.updatepermission);
+router.get('/user/checkopenid', validationMiddleware, controllers.myuser.checkopenid);
+router.post('/user/add', validationMiddleware, controllers.myuser.adduser);
+router.get('/user/:openid/active', validationMiddleware, controllers.myuser.activeuser);
+router.get('/user/:openid/permission', validationMiddleware, controllers.myuser.updatepermission);
 
 module.exports = router

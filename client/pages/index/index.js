@@ -12,7 +12,24 @@ Page({
   },
 
   onLoad: function(options) {
-    this.bindGetUserInfo();
+    
+  },
+
+  onShow: function() {
+    console.log('onShow');
+    let that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，直接登陆
+          console.log('已经授权，直接登陆');
+          that.bindGetUserInfo();
+        } else {
+          console.log('未授权,不进行登陆操作')
+        }
+      }
+    })
   },
 
   // 用户登录示例
@@ -29,19 +46,15 @@ Page({
       // 可使用本函数更新登录态
       qcloud.loginWithCode({
         success: res => {
+          console.log(res.openId);
           this.setData({
             userInfo: res,
             logged: true
           })
-          // console.log(res.avatarUrl);
-          // console.log(res);
           // check openid
-          let openid = res.openId;
-          wx.request({
+          qcloud.request({
+            login: true,
             url: config.service.checkOpenIdUrl,
-            data: {
-              openid: openid
-            },
             success: function (res) {
               console.log(res.data)              
               if (res.data.code === 1) {
@@ -50,12 +63,12 @@ Page({
                   util.showSuccess('登录成功')
                 } else {
                   // 需要激活
-                  util.showModel('提示', '您的账户需要主管经理激活')
+                  util.showModel('提示', '您的账户需要激活')
                 }
               } else {
                 // 新用户信息输入
                 wx.navigateTo({
-                  url: '../user/input/input?openid=' + openid,
+                  url: '../user/input/input',
                 })
               }
             },

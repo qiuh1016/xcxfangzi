@@ -1,4 +1,5 @@
 // pages/user/input/input.js
+var qcloud = require('../../../vendor/wafer2-client-sdk/index')
 var config = require('../../../config')
 var util = require('../../../utils/util.js')
 
@@ -8,11 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openid: ''
   },
 
   submit: function() {
-    console.log(this.data);
     wx.showModal({
       title: '提示',
       content: JSON.stringify(this.data),
@@ -30,8 +29,6 @@ Page({
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let data = e.detail.value;
-    data.openid = this.data.openid;
-    console.log(data);
 
     if (!data.name) {
       wx.showModal({
@@ -79,18 +76,32 @@ Page({
     }
 
     util.showBusy('提交中');
-    wx.request({
+    // wx.request({
+    qcloud.request({
+      login: true,
       method: 'POST',
       url: config.service.addUserUrl,
       data: data,
       success: function (res) {
         console.log(res.data);
-        util.showModel('提示', res.data.msg);
-        // TODO: 注册成功后的动作
+        wx.hideToast();
+
+        wx.showModal({
+          title: '提示',
+          content: res.data.msg,
+          showCancel: false,
+          success: function() {
+            if (res.data.code === 1) {
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          }
+        })
       },
       fail: function (err) {
         console.log(err);
-        util.showModel('服务器连接错误', err.message)
+        util.showModel('提示', '服务器错误')
       }
     })
   },
@@ -98,10 +109,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.setData({
-      openid: options.openid
-    })
+  onLoad: function () {
+
   },
 
   /**

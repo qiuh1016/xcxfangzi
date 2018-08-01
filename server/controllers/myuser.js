@@ -1,7 +1,7 @@
 const db = require('../middlewares/db.js');
 
 let checkopenid = async (ctx, next) => {
-  let openid = ctx.query.openid || '';
+  let openid = ctx.state.$wxInfo.userinfo.openId || '';
 
   let user = await db.getUserByOpenId(openid);
   if (user.length != 0) {
@@ -9,13 +9,11 @@ let checkopenid = async (ctx, next) => {
       code: 1,
       msg: "用户已存在，登录成功",
       active: user[0].active,
-      openid: openid
     }
   } else {
     ctx.body = {
       code: 0,
-      msg: "",
-      openid: openid
+      msg: "openid未发现，添加用户",
     }
   }
 }
@@ -25,17 +23,23 @@ let adduser = async (ctx, next) => {
   let gender = ctx.request.body.gender;
   let phone = ctx.request.body.phone;
   let depart = ctx.request.body.depart;
-  let openid = ctx.request.body.openid;
+  let openid = ctx.state.$wxInfo.userinfo.openId || '';
 
+  if (openid == '') {
+    return ctx.body = {
+      code: 0,
+      msg: "openid为空"
+    }
+  }
   try {
     let user = await db.getUserByPhone(phone);
     if (user.length != 0) {
       // phone 已存在
-      let user = await db.getUserByOpenId(openid);
-      if (user.length != 0) {
-        // openid 已存在
+      let user_1 = await db.getUserByOpenId(openid);
+      if (user_1.length == 0) {
+        // openid 不存在
         // 检测name和depart是否一致
-        if (user[0].name === name && user[0].depart == depart) {
+        if (user[0].name == name && user[0].depart == depart) {
           await db.updateOpenid(phone, openid);
           ctx.body = {
             code: 1,
@@ -65,7 +69,7 @@ let adduser = async (ctx, next) => {
   } catch (err) {
     ctx.body = {
       code: 0,
-      msg: "数据库错误"
+      msg: "服务器内部错误"
     }
   }
 }
