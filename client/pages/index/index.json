@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "xxx",
   "usingComponents": {
+    "i-notice-bar": "../../vendor/iView/notice-bar/index",
     "i-button": "../../vendor/iView/button/index"
   }
 }

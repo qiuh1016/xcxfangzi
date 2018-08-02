@@ -32,7 +32,56 @@ Page({
         members: ['部门5人员1', '部门5人员2', '部门5人员3', '部门5人员4', '部门5人员5']
       },
     ],
-    members: []
+    members: [],
+
+    actionSheetVisible: false,
+    toggle: false,
+    sheetAction: [
+      {
+        name: '删除',
+        color: '#ed3f14'
+      }
+    ],
+  },
+
+  actionsTap(i) {
+    console.log(i)
+    this.setData({
+      actionSheetVisible: true
+    });
+  },
+
+  handleCancel() {
+    this.setData({
+      actionSheetVisible: false,
+      toggle: !this.data.toggle
+    });
+    console.log(this.data.toggle, 111111111)
+  },
+
+  handleClickItem() {
+    const action = [...this.data.sheetAction];
+    action[0].loading = true;
+
+    this.setData({
+      sheetAction: action
+    });
+
+    setTimeout(() => {
+      action[0].loading = false;
+      this.setData({
+        actionSheet: false,
+        sheetAction: action,
+        toggle: this.data.toggle ? false : true
+      });
+
+    }, 2000);
+  },
+
+  handlerCloseButton() {
+    this.setData({
+      toggle2: this.data.toggle2 ? false : true
+    });
   },
 
   openUserPage: (event) => {

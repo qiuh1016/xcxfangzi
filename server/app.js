@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const app = new Koa()
 const debug = require('debug')('koa-weapp-demo')
+const views = require('koa-views');
 const response = require('./middlewares/response')
 const bodyParser = require('koa-bodyparser')
 const config = require('./config')
@@ -10,6 +11,10 @@ app.use(response)
 
 // 解析请求体
 app.use(bodyParser())
+
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
+}));
 
 // 引入路由分发
 const router = require('./routes/index.js')

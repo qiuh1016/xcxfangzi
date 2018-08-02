@@ -14,6 +14,7 @@ router.get('/test', controllers.test.test)
 router.get('/test/db/add', controllers.test.addUser)
 router.get('/test/db/show', controllers.test.showUser)
 router.get('/test/db/delete', controllers.test.deleteUser)
+router.get('/test/page', controllers.test.page)
 
 // --- 登录与授权 Demo --- //
 // 登录接口

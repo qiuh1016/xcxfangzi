@@ -1,5 +1,11 @@
 const db = require('../middlewares/db.js');
 
+let page = async (ctx, next) => {
+  await ctx.render('index', {
+    title: 'koa2 qh test'
+  })
+}
+
 let test = async (ctx, next) => {
   let lat = ctx.query.lat;
   let lon = ctx.query.lon;
@@ -73,5 +79,5 @@ let deleteUser = async (ctx, next) => {
 }
 
 module.exports = {
-  test, addUser, showUser, deleteUser
+  page, test, addUser, showUser, deleteUser
 }

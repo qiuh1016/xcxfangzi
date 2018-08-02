@@ -3,15 +3,48 @@
 <view wx:if="{{members.length === 0}}">
   <i-panel wx:for="{{departList}}" wx:for-item="depart" wx:key="index">
     <i-cell title="{{depart.name}}" label="{{depart.manager}}" is-link bindtap="openUserPage" data-name="{{depart.name}}">
-      <i-icon type="homepage" slot="icon" />
+      <i-icon size="24" type="homepage" slot="icon" />
     </i-cell>
   </i-panel>
 </view>
 
-<view wx:else>
+<!-- <view wx:else>
   <i-panel wx:for="{{members}}" wx:for-item="menber" wx:key="index">
     <i-cell title="{{menber}}">
-      <i-icon type="addressbook" slot="icon" />
+      <i-icon size="24" type="addressbook" slot="icon" />
     </i-cell>
   </i-panel>
+</view> -->
+
+<view class="i-swipeout-demo" wx:else>
+  <view class="i-swipeout-demo-title">和actionsheet联合使用</view>
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ sheetAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem" mask-closable="{{ false }}">
+    <view slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+  <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{180}}" unclosable="{{true}}" toggle="{{toggle}}" wx:for="{{members}}" wx:for-item="menber" wx:key="index">
+    <view slot="content">
+      <!-- <view class="i-swipeout-image">
+        <i-icon size="20" color="#FFFFFF" type="feedback_fill"></i-icon>
+      </view> -->
+      <i-avatar i-class="i-swipeout-image" src="https://lg-r6o9ylj8-1256796700.cos.ap-shanghai.myqcloud.com/user-unlogin.png" size="large"></i-avatar>
+      <view class="i-swipeout-des">
+        <view class="i-swipeout-des-h2">第七个小矮人</view>
+        <view class="i-swipeout-des-detail">乐观善良的7个小矮人原本过着简单快乐的生活，不料诅咒公主的巫婆利用小矮人进入.</view>
+      </view>
+    </view>
+    <view slot="button" class="i-swipeout-demo-button-group" style="background:#2db7f5;">
+      <view class="i-swipeout-demo-button" style="width:60px" bindtap="actionsTap">
+        <i-icon size="32" type="like_fill"></i-icon>
+      </view>
+      <view class="i-swipeout-demo-button" style="width:60px" bindtap="actionsTap">
+        <i-icon size="32" type="share_fill"></i-icon>
+      </view>
+      <view class="i-swipeout-demo-button" style="width:60px" bindtap="actionsTap">
+        <i-icon size="32" type="delete_fill"></i-icon>
+      </view>
+    </view>
+  </i-swipeout>
 </view>

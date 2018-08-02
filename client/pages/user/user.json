@@ -5,6 +5,9 @@
     "i-cell": "../../vendor/iView/cell/index",
     "i-panel": "../../vendor/iView/panel/index",
     "i-icon": "../../vendor/iView/icon/index",
-    "i-switch": "../../vendor/iView/switch/index"
+    "i-switch": "../../vendor/iView/switch/index",
+    "i-action-sheet": "../../vendor/iView/action-sheet/index",
+    "i-swipeout": "../../vendor/iView/swipeout/index",
+    "i-avatar": "../../vendor/iView/avatar/index"
   }
 }

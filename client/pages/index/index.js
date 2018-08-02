@@ -17,13 +17,13 @@ Page({
 
   onShow: function() {
     // TODO: test 为了测试 注释掉
-    if (!this.data.logged) {
-      setTimeout(() => {
-        wx.navigateTo({
-          url: '../user/login/login',
-        })
-      }, 1000)
-    }
+    // if (!this.data.logged) {
+    //   setTimeout(() => {
+    //     wx.navigateTo({
+    //       url: '../user/login/login',
+    //     })
+    //   }, 1000)
+    // }
   },
 
   // 用户登录示例

@@ -1,4 +1,8 @@
 <!--index.wxml-->
+<i-notice-bar loop closable>
+  2018年世界杯,将于6月14日至7月15日举行
+</i-notice-bar>
+
 <view class="container">
   <!-- 用户登录测试 -->
   <view class="userinfo">
@@ -44,22 +48,22 @@
 
   <!-- 打开用户信息输入界面 -->
   <view class='uploader'>
-    <i-button type="primary" bind:click="openUserInputPage">信息输入</i-button>    
+    <i-button type="primary" bind:click="openUserInputPage">信息输入</i-button>
   </view>
 
   <!-- 打开用户登录界面 -->
   <view class='uploader'>
-    <i-button type="primary" bind:click="openUserLoginPage">用户登录</i-button>    
+    <i-button type="primary" bind:click="openUserLoginPage">用户登录</i-button>
   </view>
 
   <!-- 打开用户打卡界面 -->
   <view class='uploader'>
-    <i-button type="primary" bind:click="openSignAddPage">用户打卡</i-button>    
+    <i-button type="primary" bind:click="openSignAddPage">用户打卡</i-button>
   </view>
 
   <!-- 打开打卡列表界面 -->
   <view class='uploader'>
-    <i-button type="primary" bind:click="openSignListPage">打卡列表</i-button>    
+    <i-button type="primary" bind:click="openSignListPage">打卡列表</i-button>
   </view>
 
   <!-- 上传图片测试 -->
