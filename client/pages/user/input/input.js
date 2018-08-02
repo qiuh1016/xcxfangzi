@@ -11,7 +11,7 @@ Page({
   data: {
     name: '',
     phone: '',
-    depart: '部门1',
+    depart: '',
     gender: '男',
     departs: ['部门1', '部门2', '部门3', '部门4', '部门5', '经营层'],
     genders: ['男', '女']
@@ -50,18 +50,6 @@ Page({
     let phone = this.data.phone
     let depart = this.data.depart
 
-    // wx.showModal({
-    //   title: '提示',
-    //   content: JSON.stringify({name, gender, phone, depart}),
-    //   showCancel: false,
-    //   success: function (res) {
-    //     if (res.confirm) {
-    //       console.log('用户点击确定')
-    //     } else if (res.cancel) {
-    //       console.log('用户点击取消')
-    //     }
-    //   }
-    // })
     this.formSubmit({
       detail: {
         value: {
@@ -162,6 +150,10 @@ Page({
       title: '提示',
       content: '首次登录，请正确输入您的信息',
       showCancel: false,
+    })
+
+    this.setData({
+      depart: this.data.departs[0]
     })
   },
 
