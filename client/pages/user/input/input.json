@@ -3,6 +3,9 @@
   "usingComponents": {
     "i-input": "../../../vendor/iView/input/index",
     "i-button": "../../../vendor/iView/button/index",
-    "i-panel": "../../../vendor/iView/panel/index"
+    "i-panel": "../../../vendor/iView/panel/index",
+    "i-radio": "../../../vendor/iView/radio/index",
+    "i-radio-group": "../../../vendor/iView/radio-group/index"
+    
   }
 }

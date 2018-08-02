@@ -6,7 +6,8 @@ const pool = mysql.createPool({
   port: config.mysql.port,  
   user: config.mysql.user,
   password: config.mysql.pass,
-  database: config.mysql.db
+  database: config.mysql.db,
+  charset: config.mysql.char,
 });
 
 pool.getConnection(function (err, connection) {

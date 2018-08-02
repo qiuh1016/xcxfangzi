@@ -15,17 +15,32 @@
     <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" />
 </i-panel> -->
 
-<!-- <form>
+<form>
   <i-panel title="用户信息">
-    <i-input value="{{ value6 }}" type="text" right title="姓名" mode="wrapped" placeholder="" maxlength="10"/>
-    <i-input value="{{ value6 }}" type="number" right title="手机号" mode="wrapped" placeholder="" maxlength="11"/>
-    <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" maxlength="10"/>
+    <i-input value="{{ value6 }}" type="text" right title="姓名" mode="wrapped" placeholder="" maxlength="10" bind:change='handleNameChange' />
+    <i-input value="{{ value6 }}" type="number" right title="手机号" mode="wrapped" placeholder="" maxlength="11" bind:change='handlePhoneChange' />
+
+
+    <view class="i-class i-cell i-input i-input-wrapped">
+      <view class="i-cell-hd i-input-title">性别</view>
+      <picker class="picker i-input-input i-cell-bd i-input-input-right" bindchange="handleGenderPickChange" range="{{genders}}">
+        {{gender}}
+      </picker>
+    </view>
+
+    <view class="i-class i-cell i-input i-input-wrapped">
+      <view class="i-cell-hd i-input-title">部门</view>
+      <picker class="picker i-input-input i-cell-bd i-input-input-right" bindchange="handleDepartPickChange" range="{{departs}}">
+        {{depart}}
+      </picker>
+    </view>
+
   </i-panel>
 
-  <i-button type="primary" bind:click="submit">提交</i-button>
-</form> -->
+  <i-button type="primary" bind:click="iViewSubmit">提交</i-button>
+</form>
 
-<form bindsubmit="formSubmit">
+<!-- <form bindsubmit="formSubmit">
   <view class="section">
     <view class="weui-cells__title">姓名</view>
     <view class="weui-cells weui-cells_after-title">
@@ -92,4 +107,4 @@
     <button formType="submit" type="primary">提交</button>
   </view>
 
-</form>
+</form> -->

@@ -16,25 +16,21 @@ Page({
   },
 
   onShow: function() {
-    console.log('onShow');
-    let that = this;
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，直接登陆
-          console.log('已经授权，直接登陆');
-          that.bindGetUserInfo();
-        } else {
-          console.log('未授权,不进行登陆操作')
-        }
-      }
-    })
+    // TODO: test 为了测试 注释掉
+    if (!this.data.logged) {
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '../user/login/login',
+        })
+      }, 1000)
+    }
   },
 
   // 用户登录示例
-  bindGetUserInfo: function() {
-    if (this.data.logged) return
+  bindGetUserInfo: function () {
+    if (this.data.logged) {
+      return
+    }
 
     util.showBusy('正在登录')
 
@@ -49,18 +45,24 @@ Page({
           console.log(res.openId);
           this.setData({
             userInfo: res,
-            logged: true
           })
           // check openid
           qcloud.request({
             login: true,
             url: config.service.checkOpenIdUrl,
-            success: function (res) {
-              console.log(res.data)              
+            success: (res) => {
+              console.log(res.data)
               if (res.data.code === 1) {
                 if (res.data.active) {
                   // 登陆成功
                   util.showSuccess('登录成功')
+                  this.setData({
+                    logged: true
+                  })
+                  // TODO: 登陆成功之后的操作
+                  wx.navigateTo({
+                    url: '../../index/index',
+                  })
                 } else {
                   // 需要激活
                   util.showModel('提示', '您的账户需要激活')
@@ -68,7 +70,7 @@ Page({
               } else {
                 // 新用户信息输入
                 wx.navigateTo({
-                  url: '../user/input/input',
+                  url: '../input/input',
                 })
               }
             },

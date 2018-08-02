@@ -9,18 +9,66 @@ Page({
    * 页面的初始数据
    */
   data: {
+    name: '',
+    phone: '',
+    depart: '部门1',
+    gender: '男',
+    departs: ['部门1', '部门2', '部门3', '部门4', '部门5', '经营层'],
+    genders: ['男', '女']
   },
 
-  submit: function() {
-    wx.showModal({
-      title: '提示',
-      content: JSON.stringify(this.data),
-      showCancel: false,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+
+  handleNameChange({ detail = {} }) {
+    this.setData({
+      name: detail.detail.value
+    });
+  },
+
+  handlePhoneChange({ detail = {} }) {
+    this.setData({
+      phone: detail.detail.value
+    });
+  },
+
+  handleGenderPickChange({ detail = {} }) {
+    let gender = this.data.genders[detail.value]
+    this.setData({
+      gender: gender
+    });
+  },
+
+  handleDepartPickChange({ detail = {} }) {
+    let gender = this.data.departs[detail.value]
+    this.setData({
+      depart: gender
+    });
+  },
+
+  iViewSubmit: function() {
+    let name = this.data.name
+    let gender = this.data.gender
+    let phone = this.data.phone
+    let depart = this.data.depart
+
+    // wx.showModal({
+    //   title: '提示',
+    //   content: JSON.stringify({name, gender, phone, depart}),
+    //   showCancel: false,
+    //   success: function (res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //     } else if (res.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+    this.formSubmit({
+      detail: {
+        value: {
+          name,
+          gender,
+          phone,
+          depart
         }
       }
     })
@@ -110,7 +158,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-
+    wx.showModal({
+      title: '提示',
+      content: '首次登录，请正确输入您的信息',
+      showCancel: false,
+    })
   },
 
   /**

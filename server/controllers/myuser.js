@@ -48,7 +48,7 @@ let adduser = async (ctx, next) => {
         } else {
           ctx.body = {
             code: 0,
-            msg: "用户信息不符"
+            msg: "您的手机号已被管理员提前导入到系统中，但是姓名或部门与系统中不一致，请与管理员联系"
           }
         }
       } else {
