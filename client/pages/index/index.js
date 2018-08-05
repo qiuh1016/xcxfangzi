@@ -8,7 +8,8 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    currentTab: 'home'
   },
 
   onLoad: function(options) {
@@ -24,6 +25,12 @@ Page({
     //     })
     //   }, 1000)
     // }
+  },
+
+  handleTabChange({ detail }) {
+    this.setData({
+      currentTab: detail.key
+    });
   },
 
   // 用户登录示例
@@ -230,7 +237,7 @@ Page({
   // 显示用户页面
   openUserPage: () => {
     wx.navigateTo({
-      url: '../user/user',
+      url: '../user/list/',
     })
   },
 

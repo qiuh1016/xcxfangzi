@@ -1,8 +1,8 @@
 <!--pages/sign/add.wxml-->
 <view class='time'>
-  <text>18:30</text>
+  <text>{{currentTime}}</text>
 </view>
 
 <view class='sign'>
-  <image src="https://lg-r6o9ylj8-1256796700.cos.ap-shanghai.myqcloud.com/sign.png" mode="aspectFit"></image>
+  <image src="https://lg-r6o9ylj8-1256796700.cos.ap-shanghai.myqcloud.com/sign.png" mode="aspectFit" bindtap='doUploadLocation'></image>
 </view>

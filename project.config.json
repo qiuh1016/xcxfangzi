@@ -4,11 +4,15 @@
 	"miniprogramRoot": "./client",
 	"qcloudRoot": "./server",
 	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wxb2c22856549f3ab2",
 	"projectname": "xcx",
 	"compileType": "miniprogram",
-	"libVersion": "2.2.1",
+	"libVersion": "2.2.2",
 	"condition": {}
 }

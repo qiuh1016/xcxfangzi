@@ -73,3 +73,10 @@
     </navigator>
   </view>
 </view>
+
+<!-- <i-tab-bar current="{{ currentTab }}" bindchange="handleTabChange" fixed>
+  <i-tab-bar-item key="home" icon="homepage" current-icon="homepage_fill" title="Home"></i-tab-bar-item>
+  <i-tab-bar-item key="friends" icon="group" current-icon="group_fill" title="Friends"></i-tab-bar-item>
+  <i-tab-bar-item key="notice" icon="remind" current-icon="remind_fill" count="3" title="Notice"></i-tab-bar-item>
+  <i-tab-bar-item key="my" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
+</i-tab-bar> -->

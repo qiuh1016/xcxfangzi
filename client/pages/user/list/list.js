@@ -1,4 +1,4 @@
-// pages/user/user.js
+// pages/user/list/list.js
 Page({
 
   /**
@@ -8,7 +8,7 @@ Page({
     departList: [
       {
         name: '部门1',
-        manager:'主管经理1',
+        manager: '主管经理1',
         members: ['部门1人员1', '部门1人员2', '部门1人员3', '部门1人员4', '部门1人员5']
       },
       {
@@ -86,7 +86,7 @@ Page({
 
   openUserPage: (event) => {
     wx.navigateTo({
-      url: './user?depart=' + event.currentTarget.dataset.name,
+      url: './list?depart=' + event.currentTarget.dataset.name,
     })
   },
 
@@ -122,48 +122,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

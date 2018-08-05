@@ -2,6 +2,8 @@
   "navigationBarTitleText": "xxx",
   "usingComponents": {
     "i-notice-bar": "../../vendor/iView/notice-bar/index",
-    "i-button": "../../vendor/iView/button/index"
+    "i-button": "../../vendor/iView/button/index",
+    "i-tab-bar": "../../vendor/iView/tab-bar/index",
+    "i-tab-bar-item": "../../vendor/iView/tab-bar-item/index"
   }
 }

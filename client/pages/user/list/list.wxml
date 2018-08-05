@@ -1,4 +1,4 @@
-<!--pages/user/user.wxml-->
+<!--pages/user/list/list.wxml-->
 
 <view wx:if="{{members.length === 0}}">
   <i-panel wx:for="{{departList}}" wx:for-item="depart" wx:key="index">

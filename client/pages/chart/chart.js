@@ -1,5 +1,6 @@
 // pages/chart/chart.js
 var wxCharts = require('../../vendor/wxcharts/wxcharts-min.js');
+var moment = require('../../vendor/moment/moment.min.js');
 
 var idinfolist = [
   { "depart": "部门1", "number": 15 },
@@ -16,7 +17,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dates: '2018-08-01',
+    today: '2018-08-01',
+    dateStart: '2018-07-01',
+    dateEnd: '2018-08-01',
     listData: idinfolist,
   },
 
@@ -30,15 +33,11 @@ Page({
   bindDateChange: function (e) {
     console.log(e.detail.value)
     this.setData({
-      dates: e.detail.value
+      today: e.detail.value
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  initChart() {
     let windowWidth = 320;
     try {
       let res = wx.getSystemInfoSync();
@@ -65,6 +64,18 @@ Page({
       },
       dataLabel: false
     });
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let todayStr = moment(new Date()).format('YYYY-MM-DD');
+    this.setData({
+      today: todayStr,
+      dateEnd: todayStr
+    })
+    this.initChart();
   },
 
   /**

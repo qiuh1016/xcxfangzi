@@ -1,5 +1,7 @@
 /* pages/chart/chart.wxss */
 
+@import "../../vendor/iView/input/index.wxss";
+
 .section {
    margin-left:10rpx;
    margin-right:10rpx;

@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/chart/chart",
-    "pages/user/user",
+    "pages/user/list/list",
     "pages/user/input/input",
     "pages/user/login/login",    
     "pages/sign/add/add",
@@ -15,5 +15,37 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Wafer Quick Start",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#9B9B9B",
+    "selectedColor": "#2D8CF0",
+    "borderStyle": "red",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "主页",
+      "iconPath": "./vendor/img/icon_tab_home.png",
+      "selectedIconPath": "./vendor/img/icon_tab_home_s.png"
+      },
+      {
+        "pagePath": "pages/sign/add/add",
+        "text": "打卡",
+        "iconPath": "./vendor/img/icon_tab_map.png",
+        "selectedIconPath": "./vendor/img/icon_tab_map_s.png"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "业绩",
+        "iconPath": "./vendor/img/icon_tab_pin.png",
+        "selectedIconPath": "./vendor/img/icon_tab_pin_s.png"
+      },
+      {
+      "pagePath": "pages/user/list/list",
+      "text": "我的",
+      "iconPath": "./vendor/img/icon_tab_my.png",
+      "selectedIconPath": "./vendor/img/icon_tab_my_s.png"
+      }
+    ]
   }
 }
