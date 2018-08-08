@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/user/mine/mine",
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/chart/chart",
     "pages/user/list/list",
     "pages/user/input/input",
-    "pages/user/login/login",    
+    "pages/user/login/login",
     "pages/sign/add/add",
     "pages/sign/list/list"
   ],
@@ -23,10 +24,16 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-      "pagePath": "pages/index/index",
-      "text": "主页",
-      "iconPath": "./vendor/img/icon_tab_home.png",
-      "selectedIconPath": "./vendor/img/icon_tab_home_s.png"
+        "pagePath": "pages/user/mine/mine",
+        "text": "京东",
+        "iconPath": "./vendor/img/icon_tab_my.png",
+        "selectedIconPath": "./vendor/img/icon_tab_my_s.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "./vendor/img/icon_tab_home.png",
+        "selectedIconPath": "./vendor/img/icon_tab_home_s.png"
       },
       {
         "pagePath": "pages/sign/add/add",
@@ -41,10 +48,10 @@
         "selectedIconPath": "./vendor/img/icon_tab_pin_s.png"
       },
       {
-      "pagePath": "pages/user/list/list",
-      "text": "我的",
-      "iconPath": "./vendor/img/icon_tab_my.png",
-      "selectedIconPath": "./vendor/img/icon_tab_my_s.png"
+        "pagePath": "pages/user/list/list",
+        "text": "我的",
+        "iconPath": "./vendor/img/icon_tab_my.png",
+        "selectedIconPath": "./vendor/img/icon_tab_my_s.png"
       }
     ]
   }

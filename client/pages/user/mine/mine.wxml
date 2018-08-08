@@ -1,0 +1,22 @@
+<!--pages/user/mine/mine.wxml-->
+<view class='my-header-wrap'>
+  <view class='my-header'>
+    <view class='my-header-main'>
+      <image class='userImg' src='https://lg-r6o9ylj8-1256796700.cos.ap-shanghai.myqcloud.com/user_jd.png' mode='aspectFit'></image>
+      <view class='my_header_msg'>
+        <label class='userName'>裘裘裘裘</label>
+        <label class='userId'>用户名：jd_51d459a2ca9b7</label>
+      </view>
+      <view class='my-header-plus'></view>
+    </view>
+  </view>
+</view>
+
+<view class='account-manager'>
+  <i-icon type="setup_fill" size="22" color="#86231C" />
+  <label>账号管理</label>
+</view>
+
+<form report-submit="true" bindsubmit="formSubmit" style='width: 100%; height: 260rpx;'>
+  <button formType="submit">Submit</button>
+</form>

@@ -1,0 +1,83 @@
+/* pages/user/mine/mine.wxss */
+
+.my-header-wrap {
+  display: block;
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #fff;
+}
+
+.my-header {
+  height: 240rpx;
+  border-radius: 12rpx;
+  background-image: linear-gradient(90deg, rgb(235, 60, 60), rgb(255, 116, 89));
+  box-shadow: 0 4rpx 10rpx rgba(255,98,98,.4);
+  overflow: hidden;
+}
+
+.my-header-main {
+  display: flex;
+  position: relative;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.my_header_msg {
+  display: block;
+  flex: 1;
+}
+
+.my-header-plus {
+  height: 116rpx;
+  width: 160rpx;
+  position: absolute;
+  right: -10rpx;
+  bottom: -50rpx;
+  transform: rotate(11deg);
+  border-top-left-radius: 8rpx;
+  background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAASCAMAAACaR4u6AAAABGdBT…Dn9cUsRbNqIWzM9XDNIGFNOEPL9834t+D378j+A5Ld/6c/VpwYZxvL3AgAAAAASUVORK5CYII=) no-repeat 8px 4px;
+  background-size: 100rpx;
+  box-shadow: -1px -1px 6px #c6934d;
+}
+.userImg {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  border-color: #F58F8A;
+  border-width: 1rpx;
+  box-shadow: 0rpx 0rpx 30rpx #C4332F;
+}
+
+.userName {
+  position: absolute;
+  left: 190rpx;
+  top: 80rpx;
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: medium;
+}
+
+.userId {
+  position: absolute;
+  left: 190rpx;
+  top: 130rpx;
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: small;
+  opacity:0.8;
+}
+
+.account-manager {
+  position: absolute;
+  right: 60rpx;
+  top: 40rpx;
+  font-size: small;
+  /* opacity: 0.6; */
+}
+
+.account-manager label {
+  color: #86231C;
+}

@@ -31,6 +31,9 @@ var config = {
 
         // 添加用户接口
         addUserUrl: `${host}/api/user/add`,
+
+        // 模版消息
+        sendMessageUrl: `${host}/api/message`,
     }
 };
 

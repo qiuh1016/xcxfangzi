@@ -10,4 +10,6 @@ router.post('/user/add', validationMiddleware, controllers.myuser.adduser);
 router.get('/user/:openid/active', validationMiddleware, controllers.myuser.activeuser);
 router.get('/user/:openid/permission', validationMiddleware, controllers.myuser.updatepermission);
 
+router.get('/message', validationMiddleware, controllers.myuser.sendmessage);
+
 module.exports = router

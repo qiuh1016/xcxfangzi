@@ -1,6 +1,7 @@
 const db = require('../middlewares/db.js');
+const axios = require('axios');
 
-let checkopenid = async (ctx, next) => {
+let checkopenid = async(ctx, next) => {
   let openid = ctx.state.$wxInfo.userinfo.openId || '';
 
   let user = await db.getUserByOpenId(openid);
@@ -18,7 +19,7 @@ let checkopenid = async (ctx, next) => {
   }
 }
 
-let adduser = async (ctx, next) => {
+let adduser = async(ctx, next) => {
   let name = ctx.request.body.name;
   let gender = ctx.request.body.gender;
   let phone = ctx.request.body.phone;
@@ -74,17 +75,67 @@ let adduser = async (ctx, next) => {
   }
 }
 
-let activeuser = async (ctx, next) => {
+let activeuser = async(ctx, next) => {
   ctx.body = {
     code: 1,
     msg: "activeuser"
   }
 }
 
-let updatepermission = async (ctx, next) => {
+let updatepermission = async(ctx, next) => {
   ctx.body = {
     code: 1,
     msg: "updatepermission"
+  }
+}
+
+let sendmessage = async(ctx, next) => {
+  let formId = ctx.query.formId || '';
+  let openid = ctx.state.$wxInfo.userinfo.openId || '';
+
+  if (!openid) {
+    ctx.body = {
+      code: 0,
+      msg: 'openId为空'
+    }
+  }
+
+  if (!formId) {
+    ctx.body = {
+      code: 0,
+      msg: 'formId为空'
+    }
+  }
+
+  let tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token';
+  let { data } = await axios.get(tokenUrl, {
+    params: {
+      grant_type: 'client_credential',
+      appid: 'wxb2c22856549f3ab2',
+      secret: 'ad0544044775b8529b4441fa56315e4a'
+    }
+  });
+  let token = data.access_token;
+
+  let messageUrl = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + token;
+  let result = await axios.post(messageUrl, {
+    touser: openid,
+    template_id: 'Vi-x7fUN18hdOVgG_4BDHEkqcHEN0p8F0ps4B9t-r6A',
+    form_id: formId,
+    data: {
+      keyword1: {
+        value: '2017-12-11 12:00:00'
+      },
+      keyword2: {
+        value: '采购订单'
+      },
+    }
+  })
+
+  ctx.body = {
+    code: 1,
+    msg: '发送成功',
+    result: result.data
   }
 }
 
@@ -92,5 +143,6 @@ module.exports = {
   checkopenid,
   adduser,
   activeuser,
-  updatepermission
+  updatepermission,
+  sendmessage
 }
