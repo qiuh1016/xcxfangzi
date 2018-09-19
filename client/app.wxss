@@ -6,3 +6,7 @@
   box-sizing: border-box;
   margin-bottom: 80px;
 } 
+
+page {
+ background: rgb(247, 247, 247);
+}

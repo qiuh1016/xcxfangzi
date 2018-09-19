@@ -9,7 +9,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    account: {
+      name: '裘裘裘裘',
+      id: 'jd_51d459a2ca9b7'
+    },
+    order: {
+      toPay: 0,
+      toReceive: 9,
+      afterSell:0
+    },
+    assets: {
+      ticket: 10,
+      limit: '9000.00',
+      bean: 819,
+      card: 0
+    },
+    link: {
+      goods: 1,
+      store: 3,
+      footprint: 0
+    }
   },
 
   formSubmit(e) {

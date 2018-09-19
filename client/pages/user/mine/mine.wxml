@@ -1,22 +1,109 @@
 <!--pages/user/mine/mine.wxml-->
+
+<!-- 用户信息 -->
 <view class='my-header-wrap'>
   <view class='my-header'>
     <view class='my-header-main'>
       <image class='userImg' src='https://lg-r6o9ylj8-1256796700.cos.ap-shanghai.myqcloud.com/user_jd.png' mode='aspectFit'></image>
       <view class='my_header_msg'>
-        <label class='userName'>裘裘裘裘</label>
-        <label class='userId'>用户名：jd_51d459a2ca9b7</label>
+        <label class='userName'>
+          {{account.name}}
+        </label>
+        <label class='userId'>用户名：{{account.id}}</label>
       </view>
-      <view class='my-header-plus'></view>
+      <view class='my-header-plus'>
+        <view class='my-header-plus-btn'>尊享8大特权</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='account-manager'>
+    <i-icon type="setup_fill" size="22" color="#86231C" />
+    <label>账号管理</label>
+  </view>
+</view>
+<!-- 订单信息 -->
+<view class="my-section">
+  <view class="my-order">
+    <view class="my-order-cell type-unpay">
+      <span>
+        待付款
+        <i class="dot dot_num" wx:if="{{order.toPay != 0}}">{{order.toPay}}</i>
+      </span>
+    </view>
+    <view class="my-order-cell type-receive">
+      <span>
+        待收货
+        <i class="dot dot_num" wx:if="{{order.toReceive != 0}}">{{order.toReceive}}</i>
+      </span>
+    </view>
+    <view class="my-order-cell type-aftersell">
+      <span>
+        退换/售后
+        <i class="dot dot_num" wx:if="{{order.afterSell != 0}}">{{order.afterSell}}</i>
+      </span>
+    </view>
+    <view class="my-order-cell type-order">
+      <span>全部订单</span>
+    </view>
+  </view>
+</view>
+<!-- 我的钱包 -->
+<view class="my-section">
+  <view class='my-assets'>
+    <view class='my-assets-cell'>
+      <span class='my_assets_cell_detail'>
+        <span class='my_assets_cell_detail_number'>{{assets.ticket}}</span>
+        <span>张</span>
+      </span>
+      <span class='my_assets_cell_title'>京东券</span>
+    </view>
+    <view class='my-assets-cell'>
+      <span class='my_assets_cell_detail'>
+        <span class='my_assets_cell_detail_number'>{{assets.limit}}</span>
+        <span>元</span>
+      </span>
+      <span class='my_assets_cell_title'>白条额度</span>
+    </view>
+    <view class='my-assets-cell'>
+      <span class='my_assets_cell_detail'>
+        <span class='my_assets_cell_detail_number'>{{assets.bean}}</span>
+        <span>个</span>
+      </span>
+      <span class='my_assets_cell_title'>京豆</span>
+    </view>
+    <view class='my-assets-cell'>
+      <span class='my_assets_cell_detail'>
+        <span class='my_assets_cell_detail_number'>{{assets.card}}</span>
+        <span>张</span>
+      </span>
+      <span class='my_assets_cell_title'>礼品卡</span>
+    </view>
+    <view class='my-order-cell type-all'>
+      <span>全部资产</span>
+    </view>
+  </view>
+</view>
+<!-- 我的关注 -->
+<view class='my-section'>
+  <view class='my-link'>
+    <view class='my-link-cell'>
+      <view class='my-link-cell-number'>{{link.goods}}</view>
+      <view class='my-link-cell-title'>关注的商品</view>
+    </view>
+    <view class='my-link-cell'>
+      <view class='my-link-cell-number'>{{link.store}}</view>
+      <view class='my-link-cell-title'>关注的店铺</view>
+    </view>
+    <view class='my-link-cell'>
+      <view class='my-link-cell-number'>{{link.footprint}}</view>
+      <view class='my-link-cell-title'>我的足迹</view>
     </view>
   </view>
 </view>
 
-<view class='account-manager'>
-  <i-icon type="setup_fill" size="22" color="#86231C" />
-  <label>账号管理</label>
-</view>
 
-<form report-submit="true" bindsubmit="formSubmit" style='width: 100%; height: 260rpx;'>
+
+<form report-submit="true" bindsubmit="formSubmit">
   <button formType="submit">Submit</button>
 </form>

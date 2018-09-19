@@ -117,25 +117,44 @@ let sendmessage = async(ctx, next) => {
   });
   let token = data.access_token;
 
-  let messageUrl = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + token;
-  let result = await axios.post(messageUrl, {
-    touser: openid,
-    template_id: 'Vi-x7fUN18hdOVgG_4BDHEkqcHEN0p8F0ps4B9t-r6A',
-    form_id: formId,
-    data: {
-      keyword1: {
-        value: '2017-12-11 12:00:00'
-      },
-      keyword2: {
-        value: '采购订单'
-      },
-    }
-  })
+  // let messageUrl = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + token;
+  // let result = await axios.post(messageUrl, {
+  //   touser: openid,
+  //   template_id: 'Vi-x7fUN18hdOVgG_4BDHEkqcHEN0p8F0ps4B9t-r6A',
+  //   form_id: formId,
+  //   page: 'index',
+  //   data: {
+  //     keyword1: {
+  //       value: '2017-12-11 12:00:00'
+  //     },
+  //     keyword2: {
+  //       value: '采购订单'
+  //     },
+  //   }
+  // })
+
+  setTimeout(function() {
+    let messageUrl = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + token;
+    axios.post(messageUrl, {
+      touser: openid,
+      template_id: 'Vi-x7fUN18hdOVgG_4BDHEkqcHEN0p8F0ps4B9t-r6A',
+      form_id: formId,
+      page: 'index',
+      data: {
+        keyword1: {
+          value: '2017-12-11 12:00:00'
+        },
+        keyword2: {
+          value: '采购订单'
+        },
+      }
+    })
+  }, 10000);
 
   ctx.body = {
     code: 1,
     msg: '发送成功',
-    result: result.data
+    // result: result.data
   }
 }
 
